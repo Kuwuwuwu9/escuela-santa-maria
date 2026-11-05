@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Escuela de Lenguaje Santa María de Vínculo - Estilos Complementarios
+   Diseño de alta fidelidad, accesibilidad y micro-interacciones UI/UX
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main > :first-child {
+  margin-top: 0 !important;
+}
+
+main > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Scrollbar sutil y moderno */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff8f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dbc1ba;
+  border-radius: 9999px;
+  border: 2px solid #fff8f6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e07a5f;
+}
+
+/* Material Symbols Icon Sizing & Alignment */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  user-select: none;
+}
+
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Suavizado de transiciones para cards y botones */
+.interactive-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Efecto de pulso suave en el botón principal */
+@keyframes softPulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(72, 169, 124, 0.35);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(72, 169, 124, 0.55);
+  }
+}
+
+.btn-primary-pulse {
+  animation: softPulse 3s infinite ease-in-out;
+}
+
+/* Animación de entrada de Modales */
+@keyframes modalBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalContentZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-backdrop-active {
+  animation: modalBackdropFadeIn 0.25s ease forwards;
+}
+
+.modal-content-active {
+  animation: modalContentZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animación de Toast Notifications */
+@keyframes toastSlideIn {
+  from {
+    transform: translateY(100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-exit {
+  animation: toastSlideOut 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Indicador de campo activo / resaltado temporal */
+@keyframes fieldPulseHighlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(224, 122, 95, 0.6);
+    border-color: #e07a5f;
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(224, 122, 95, 0.25);
+    border-color: #e07a5f;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(224, 122, 95, 0);
+  }
+}
+
+.field-highlight {
+  animation: fieldPulseHighlight 1.6s ease-out 2;
+}
+
+/* Estilos de Impresión para el Comprobante de Postulación */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #print-voucher-area, #print-voucher-area * {
+    visibility: visible;
+  }
+  
+  #print-voucher-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
